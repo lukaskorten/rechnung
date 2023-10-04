@@ -1,0 +1,6 @@
+<section>
+  <h2>Rechnungen</h2>
+</section>
+<article class="card-grid">
+  <app-rechnung-card *ngFor="let rechnung of rechnungService.getRechnungen() | async" [rechnung]="rechnung"/>
+</article>

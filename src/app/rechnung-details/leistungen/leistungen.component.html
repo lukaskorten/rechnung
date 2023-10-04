@@ -1,0 +1,23 @@
+<section>
+  <div class="leistungen-grid">
+    <div class="text-secondary">Leistung</div>
+    <div class="text-secondary">Menge</div>
+    <div class="text-secondary">Stundensatz</div>
+    <div class="text-secondary">Preis</div>
+  </div>
+  <hr />
+  <div class="leistungen-grid">
+    <ng-container *ngFor="let leistung of rechnung.leistungen">
+      <div>
+        {{ leistung.bezeichnung }}
+      </div>
+      <div>{{ leistung.menge | number }} Std.</div>
+      <div>
+        {{ leistung.stundensatz.betrag | currency: "EUR" }}
+        ({{ leistung.stundensatz.name }})
+      </div>
+      <div>{{ leistungspreis(leistung) | currency: "EUR" }}</div>
+    </ng-container>
+  </div>
+  <hr />
+</section>

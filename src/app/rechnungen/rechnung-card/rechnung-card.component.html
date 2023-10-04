@@ -1,0 +1,6 @@
+<div [routerLink]="['/rechnungen', rechnung.id]" class="card">
+  <div class="text-primary text-md">{{ rechnung.kunde.name }}</div>
+  <div class="text-secondary text-sm">
+    {{ rechnung.erstelltAm | date: "dd.MM.yyyy" }}
+  </div>
+</div>

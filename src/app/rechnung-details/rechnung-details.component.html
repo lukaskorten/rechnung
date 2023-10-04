@@ -1,0 +1,8 @@
+<section>
+  <h2>Rechnung</h2>
+</section>
+<article *ngIf="rechnung">
+  <app-rechnung-info [rechnung]="rechnung" />
+  <app-leistungen [rechnung]="rechnung" />
+  <app-betraege [rechnung]="rechnung" />
+</article>
