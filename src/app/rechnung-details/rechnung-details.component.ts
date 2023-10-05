@@ -1,9 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { take } from 'rxjs';
-import { ApiRechnung } from '../api/api-rechnung';
+import { Rechnung } from '../models/rechnung';
 import { RechnungService } from '../services/rechnung.service';
-import { preisnachlass } from '../utils/rechnung.utils';
 import { BetraegeComponent } from './betraege/betraege.component';
 import { LeistungenComponent } from './leistungen/leistungen.component';
 import { RechnungInfoComponent } from './rechnung-info/rechnung-info.component';
@@ -22,7 +20,7 @@ import { RechnungInfoComponent } from './rechnung-info/rechnung-info.component';
 })
 export class RechnungDetailsComponent implements OnInit {
   @Input() id!: string;
-  rechnung?: ApiRechnung;
+  rechnung?: Rechnung;
 
   constructor(readonly rechnungService: RechnungService) {}
 

@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ApiRechnung } from '../../api/api-rechnung';
-import { skonto, zahlungsfristAm } from '../../utils/rechnung.utils';
+import { Component, Input } from '@angular/core';
+import { Rechnung } from '../../models/rechnung';
 
 @Component({
   selector: 'app-rechnung-info',
@@ -10,14 +9,6 @@ import { skonto, zahlungsfristAm } from '../../utils/rechnung.utils';
   templateUrl: './rechnung-info.component.html',
   styleUrls: ['./rechnung-info.component.sass'],
 })
-export class RechnungInfoComponent implements OnInit {
-  @Input({ required: true }) rechnung!: ApiRechnung;
-
-  skonto!: number;
-  zahlungsfristAm!: Date;
-
-  ngOnInit() {
-    this.skonto = skonto(this.rechnung.zahlungsbedingungen);
-    this.zahlungsfristAm = zahlungsfristAm(this.rechnung);
-  }
+export class RechnungInfoComponent {
+  @Input({ required: true }) rechnung!: Rechnung;
 }

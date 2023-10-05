@@ -7,23 +7,16 @@
   </div>
   <hr />
   <div class="leistungen-grid">
-    <ng-container *ngFor="let leistung of rechnung.leistungen">
+    <ng-container *ngFor="let position of rechnung.positionen">
       <div>
-        {{ leistung.bezeichnung }}
+        {{ position.bezeichnung }}
       </div>
-      <div>{{ leistung.menge | number }} Std.</div>
+      <div>{{ position.anzahlStunden | number }} Std.</div>
       <div>
-        {{
-          leistung.stundensatz.betrag
-            | currency: rechnung.zahlungsbedingungen.waehrung
-        }}
-        ({{ leistung.stundensatz.name }})
+        {{ position.stundensatz | currency: rechnung.waehrung }}
       </div>
       <div>
-        {{
-          leistungspreis(leistung)
-            | currency: rechnung.zahlungsbedingungen.waehrung
-        }}
+        {{ position.preis | currency: rechnung.waehrung }}
       </div>
     </ng-container>
   </div>

@@ -16,7 +16,6 @@ export const rechnungen: Map<string, ApiRechnung> = new Map([
           stundensatz: {
             name: 'Remote',
             betrag: 100,
-            waehrung: 'EUR',
           },
         },
         {
@@ -25,7 +24,6 @@ export const rechnungen: Map<string, ApiRechnung> = new Map([
           stundensatz: {
             name: 'Remote',
             betrag: 100,
-            waehrung: 'EUR',
           },
         },
       ],
@@ -51,7 +49,6 @@ export const rechnungen: Map<string, ApiRechnung> = new Map([
           stundensatz: {
             name: 'Remote',
             betrag: 100,
-            waehrung: 'EUR',
           },
         },
       ],

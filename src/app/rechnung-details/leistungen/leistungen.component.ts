@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ApiLeistung, ApiRechnung } from '../../api/api-rechnung';
-import { leistungspreis } from '../../utils/rechnung.utils';
+import { Component, Input } from '@angular/core';
+import { Rechnung } from '../../models/rechnung';
 
 @Component({
   selector: 'app-leistungen',
@@ -11,6 +10,5 @@ import { leistungspreis } from '../../utils/rechnung.utils';
   styleUrls: ['./leistungen.component.sass'],
 })
 export class LeistungenComponent {
-  @Input({ required: true }) rechnung!: ApiRechnung;
-  protected readonly leistungspreis = leistungspreis;
+  @Input({ required: true }) rechnung!: Rechnung;
 }

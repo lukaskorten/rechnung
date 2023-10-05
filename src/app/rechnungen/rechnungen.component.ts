@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RechnungCardComponent } from './rechnung-card/rechnung-card.component';
 import { RechnungService } from '../services/rechnung.service';
+import { RechnungCardComponent } from './rechnung-card/rechnung-card.component';
 
 @Component({
   selector: 'app-rechnungen',
