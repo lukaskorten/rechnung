@@ -30,6 +30,7 @@ export const rechnungen: Map<string, ApiRechnung> = new Map([
       erstelltAm: '2020-01-01',
       zahlungsbedingungen: {
         zahlungsziel: 15,
+        waehrung: 'EUR',
       },
     },
   ],
@@ -54,6 +55,7 @@ export const rechnungen: Map<string, ApiRechnung> = new Map([
       erstelltAm: '2020-02-02',
       zahlungsbedingungen: {
         zahlungsziel: 30,
+        waehrung: 'USD',
       },
     },
   ],
