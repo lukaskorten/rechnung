@@ -24,4 +24,5 @@ export interface ApiLeistung {
 export interface ApiStundensatz {
   name: string;
   betrag: number;
+  waehrung: 'EUR' | 'USD';
 }
