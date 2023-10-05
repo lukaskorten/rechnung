@@ -13,10 +13,18 @@
       </div>
       <div>{{ leistung.menge | number }} Std.</div>
       <div>
-        {{ leistung.stundensatz.betrag | currency: "EUR" }}
+        {{
+          leistung.stundensatz.betrag
+            | currency: rechnung.zahlungsbedingungen.waehrung
+        }}
         ({{ leistung.stundensatz.name }})
       </div>
-      <div>{{ leistungspreis(leistung) | currency: "EUR" }}</div>
+      <div>
+        {{
+          leistungspreis(leistung)
+            | currency: rechnung.zahlungsbedingungen.waehrung
+        }}
+      </div>
     </ng-container>
   </div>
   <hr />

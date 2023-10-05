@@ -13,6 +13,7 @@ export interface ApiRechnung {
 
 export interface ApiZahlungsbedingungen {
   zahlungsziel: number;
+  waehrung: 'EUR' | 'USD';
 }
 
 export interface ApiLeistung {
