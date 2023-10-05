@@ -19,7 +19,7 @@ import {
 export class BetraegeComponent implements OnInit {
   @Input({ required: true }) rechnung!: ApiRechnung;
 
-  readonly steuersatz = 19;
+  readonly umsatzsteuersatz = 19;
 
   netto!: number;
   preisnachlass!: number;
@@ -30,8 +30,8 @@ export class BetraegeComponent implements OnInit {
   ngOnInit() {
     this.netto = preis(this.rechnung.leistungen);
     this.preisnachlass = preisnachlass(this.rechnung);
-    this.umsatzsteuer = umsatzsteuer(this.netto, this.steuersatz);
-    this.brutto = brutto(this.rechnung, this.steuersatz);
+    this.umsatzsteuer = umsatzsteuer(this.netto, this.umsatzsteuersatz);
+    this.brutto = brutto(this.rechnung, this.umsatzsteuersatz);
     this.skonto = skonto(this.rechnung.zahlungsbedingungen);
   }
 }
