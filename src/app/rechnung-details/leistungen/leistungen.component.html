@@ -2,7 +2,7 @@
   <div class="leistungen-grid">
     <div class="text-secondary">Bezeichnung</div>
     <div class="text-secondary">Menge</div>
-    <div class="text-secondary">Preis je Einheit</div>
+    <div class="text-secondary">Preis pro Einheit</div>
     <div class="text-secondary">Preis</div>
   </div>
   <hr />
@@ -11,9 +11,9 @@
       <div>
         {{ position.bezeichnung }}
       </div>
-      <div>{{ position.anzahlStunden | number }} Std.</div>
+      <div>{{ position.menge | number }} Std.</div>
       <div>
-        {{ position.stundensatz | currency: rechnung.waehrung }}
+        {{ position.preisProEinheit | currency: rechnung.waehrung }}
       </div>
       <div>
         {{ position.preis | currency: rechnung.waehrung }}

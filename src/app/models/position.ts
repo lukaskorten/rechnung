@@ -7,15 +7,15 @@ export class Position {
     return `${this.data.bezeichnung} (${this.data.stundensatz.name})`;
   }
 
-  get anzahlStunden(): number {
+  get menge(): number {
     return this.data.menge;
   }
 
-  get stundensatz(): number {
+  get preisProEinheit(): number {
     return this.data.stundensatz.betrag;
   }
 
   get preis(): number {
-    return this.anzahlStunden * this.stundensatz;
+    return this.menge * this.preisProEinheit;
   }
 }
