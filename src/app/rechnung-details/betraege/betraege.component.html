@@ -1,23 +1,25 @@
 <section>
   <div class="betraege-grid">
     <div class="text-secondary">Nettobetrag</div>
-    <div>{{ netto | currency: rechnung.zahlungsbedingungen.waehrung }}</div>
+    <div>{{ rechnung.netto | currency: rechnung.waehrung }}</div>
 
     <div class="text-secondary">
-      Preisnachlass (Abzug Skonto {{ skonto | percent }})
+      Preisnachlass (Abzug Skonto {{ rechnung.skonto | percent }})
     </div>
     <div>
-      {{ preisnachlass | currency: rechnung.zahlungsbedingungen.waehrung }}
+      {{ rechnung.preisnachlass | currency: rechnung.waehrung }}
     </div>
 
-    <div class="text-secondary">Umsatzsteuer {{ umsatzsteuersatz }} %</div>
+    <div class="text-secondary">
+      Umsatzsteuer {{ rechnung.umsatzsteuersatz | percent }}
+    </div>
     <div>
-      {{ umsatzsteuer | currency: rechnung.zahlungsbedingungen.waehrung }}
+      {{ rechnung.umsatzsteuer | currency: rechnung.waehrung }}
     </div>
   </div>
   <hr />
   <div class="betraege-grid">
     <div class="text-secondary">Bruttobetrag</div>
-    <div>{{ brutto | currency: rechnung.zahlungsbedingungen.waehrung }}</div>
+    <div>{{ rechnung.brutto | currency: rechnung.waehrung }}</div>
   </div>
 </section>

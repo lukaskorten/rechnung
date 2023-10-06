@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ApiRechnung } from '../../api/api-rechnung';
+import { Rechnung } from '../../dtos/rechnung';
 
 @Component({
   selector: 'app-rechnung-card',
@@ -11,5 +11,5 @@ import { ApiRechnung } from '../../api/api-rechnung';
   styleUrls: ['./rechnung-card.component.sass'],
 })
 export class RechnungCardComponent {
-  @Input({ required: true }) rechnung!: ApiRechnung;
+  @Input({ required: true }) rechnung!: Rechnung;
 }

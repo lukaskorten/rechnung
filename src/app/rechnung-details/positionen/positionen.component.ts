@@ -3,12 +3,12 @@ import { Component, Input } from '@angular/core';
 import { Rechnung } from '../../dtos/rechnung';
 
 @Component({
-  selector: 'app-rechnung-info',
+  selector: 'app-positionen',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './rechnung-info.component.html',
-  styleUrls: ['./rechnung-info.component.sass'],
+  templateUrl: './positionen.component.html',
+  styleUrls: ['./positionen.component.sass'],
 })
-export class RechnungInfoComponent {
+export class PositionenComponent {
   @Input({ required: true }) rechnung!: Rechnung;
 }

@@ -1,4 +1,4 @@
-interface Position {
+export interface Position {
   bezeichnung: string;
   menge: number;
   preisProEinheit: number;
@@ -13,8 +13,9 @@ export interface Rechnung {
   erstelltAm: Date;
   zahlungsziel: number;
   zahlungsfristAm: Date;
+  waehrung: 'EUR' | 'USD';
   skonto: number;
-  positionen: Position;
+  positionen: Position[];
   netto: number;
   brutto: number;
   preisnachlass: number;

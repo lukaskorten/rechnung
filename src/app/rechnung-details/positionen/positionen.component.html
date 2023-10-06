@@ -1,0 +1,22 @@
+<section>
+  <div class="leistungen-grid">
+    <div class="text-secondary">Bezeichnung</div>
+    <div class="text-secondary">Menge</div>
+    <div class="text-secondary">Preis je Einheit</div>
+    <div class="text-secondary">Preis</div>
+  </div>
+  <hr />
+  <div class="leistungen-grid">
+    <ng-container *ngFor="let position of rechnung.positionen">
+      <div>{{ position.bezeichnung }}</div>
+      <div>{{ position.menge | number }} Std.</div>
+      <div>
+        {{ position.preisProEinheit | currency: rechnung.waehrung }}
+      </div>
+      <div>
+        {{ position.preis | currency: rechnung.waehrung }}
+      </div>
+    </ng-container>
+  </div>
+  <hr />
+</section>

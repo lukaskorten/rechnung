@@ -8,6 +8,7 @@ export const rechnungen: Map<string, ApiRechnung> = new Map([
       nummer: 'P-20200101-1',
       kunde: {
         name: 'Adidas',
+        nummer: 'K-001',
       },
       leistungen: [
         {
@@ -41,6 +42,7 @@ export const rechnungen: Map<string, ApiRechnung> = new Map([
       nummer: 'P-20200202-01',
       kunde: {
         name: 'Puma',
+        nummer: 'K-002',
       },
       leistungen: [
         {

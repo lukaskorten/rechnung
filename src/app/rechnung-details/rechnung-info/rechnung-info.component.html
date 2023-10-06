@@ -1,21 +1,24 @@
 <section>
   <dl>
     <dt>Kunde</dt>
-    <dd>{{ rechnung.kunde.name }}</dd>
+    <dd>{{ rechnung.kundenname }}</dd>
+
+    <dt>Kundennummer</dt>
+    <dd>{{ rechnung.kundennummer }}</dd>
 
     <dt>Rechnungsnummer</dt>
-    <dd>{{ rechnung.nummer }}</dd>
+    <dd>{{ rechnung.rechnungsnummer }}</dd>
 
     <dt>Rechnungsdatum</dt>
     <dd>{{ rechnung.erstelltAm | date: "dd.MM.yyyy" }}</dd>
 
     <dt>Skonto</dt>
-    <dd>{{ skonto | percent }}</dd>
+    <dd>{{ rechnung.skonto | percent }}</dd>
 
     <dt>Zahlungsziel</dt>
-    <dd>{{ rechnung.zahlungsbedingungen.zahlungsziel }} Tage</dd>
+    <dd>{{ rechnung.zahlungsziel }} Tage</dd>
 
     <dt>Zu zahlen bis spätestens</dt>
-    <dd>{{ zahlungsfristAm | date: "dd.MM.yyyy" }}</dd>
+    <dd>{{ rechnung.zahlungsfristAm | date: "dd.MM.yyyy" }}</dd>
   </dl>
 </section>

@@ -1,5 +1,6 @@
 interface ApiKunde {
   name: string;
+  nummer: string;
 }
 
 export interface ApiRechnung {
