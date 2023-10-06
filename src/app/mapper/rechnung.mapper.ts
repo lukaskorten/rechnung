@@ -11,25 +11,32 @@ export class RechnungMapper {
   private static readonly skontoBeiMehrAls30Tage = 0;
   private static readonly umsatzsteuersatz = 0.19;
 
-  static toDto(apiRechnung: ApiRechnung): Rechnung {
-    const { kunde, zahlungsbedingungen, leistungen } = apiRechnung;
+  static toDto(source: ApiRechnung): Rechnung {
+    const {
+      kunde,
+      zahlungsbedingungen: { zahlungsziel, waehrung },
+      leistungen,
+      erstelltAm,
+      nummer,
+      id,
+    } = source;
 
     return {
-      id: apiRechnung.id,
-      rechnungsnummer: apiRechnung.nummer,
+      id,
+      rechnungsnummer: nummer,
       kundenname: kunde.name,
       kundennummer: kunde.nummer,
-      erstelltAm: new Date(apiRechnung.erstelltAm),
-      zahlungsziel: zahlungsbedingungen.zahlungsziel,
-      zahlungsfristAm: this.zahlungsfristAm(apiRechnung),
-      waehrung: apiRechnung.zahlungsbedingungen.waehrung,
-      skonto: this.skonto(zahlungsbedingungen),
+      zahlungsziel,
+      waehrung,
+      erstelltAm: new Date(erstelltAm),
+      umsatzsteuersatz: this.umsatzsteuersatz,
+      zahlungsfristAm: this.zahlungsfristAm(source),
+      skonto: this.skonto(source.zahlungsbedingungen),
       positionen: this.positionen(leistungen),
       netto: this.netto(leistungen),
-      brutto: this.brutto(apiRechnung),
-      preisnachlass: this.preisnachlass(apiRechnung),
-      umsatzsteuersatz: this.umsatzsteuersatz,
-      umsatzsteuer: this.umsatzsteuer(apiRechnung),
+      brutto: this.brutto(source),
+      preisnachlass: this.preisnachlass(source),
+      umsatzsteuer: this.umsatzsteuer(source),
     };
   }
 
