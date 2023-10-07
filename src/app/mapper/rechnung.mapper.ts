@@ -82,8 +82,8 @@ export class RechnungMapper {
 
   private static positionen(leistungen: ApiLeistung[]): Position[] {
     return leistungen.map(({ menge, stundensatz, bezeichnung }) => ({
-      bezeichnung,
       menge,
+      bezeichnung: `${bezeichnung} (${stundensatz.name})`,
       preisProEinheit: stundensatz.betrag,
       preis: menge * stundensatz.betrag,
     }));
