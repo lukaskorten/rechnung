@@ -7,28 +7,36 @@ export const rechnungen: Map<string, ApiRechnung> = new Map([
       id: '1',
       nummer: 'P-20200101-1',
       kunde: {
-        name: 'Adidas',
+        name: 'Musterkunde GmbH',
         nummer: 'K-001',
       },
       leistungen: [
         {
+          bezeichnung: 'Einarbeitung',
+          menge: 45,
+          stundensatz: {
+            name: 'Vor Ort',
+            betrag: 75,
+          },
+        },
+        {
           bezeichnung: 'Frontend-Entwicklung',
-          menge: 158.25,
+          menge: 85,
           stundensatz: {
             name: 'Remote',
-            betrag: 100,
+            betrag: 95,
           },
         },
         {
           bezeichnung: 'Backend-Entwicklung',
-          menge: 83.5,
+          menge: 45,
           stundensatz: {
             name: 'Remote',
-            betrag: 100,
+            betrag: 95,
           },
         },
       ],
-      erstelltAm: '2020-01-01',
+      erstelltAm: '2023-10-01',
       zahlungsbedingungen: {
         zahlungsziel: 15,
         waehrung: 'EUR',
