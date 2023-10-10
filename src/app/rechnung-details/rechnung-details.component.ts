@@ -1,11 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { take } from 'rxjs';
 import { ApiRechnung } from '../api/api-rechnung';
 import { RechnungService } from '../services/rechnung.service';
-import { preisnachlass } from '../utils/rechnung.utils';
 import { BetraegeComponent } from './betraege/betraege.component';
-import { LeistungenComponent } from './leistungen/leistungen.component';
+import { PositionenComponent } from './positionen/positionen.component';
 import { RechnungInfoComponent } from './rechnung-info/rechnung-info.component';
 
 @Component({
@@ -13,7 +11,7 @@ import { RechnungInfoComponent } from './rechnung-info/rechnung-info.component';
   standalone: true,
   imports: [
     CommonModule,
-    LeistungenComponent,
+    PositionenComponent,
     RechnungInfoComponent,
     BetraegeComponent,
   ],
