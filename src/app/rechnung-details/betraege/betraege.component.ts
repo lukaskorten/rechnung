@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ApiRechnung } from 'src/app/api/api-rechnung';
 import {
   brutto,
-  preis,
+  netto,
   preisnachlass,
   skonto,
   umsatzsteuer,
@@ -28,7 +28,7 @@ export class BetraegeComponent implements OnInit {
   skonto!: number;
 
   ngOnInit() {
-    this.netto = preis(this.rechnung.leistungen);
+    this.netto = netto(this.rechnung.leistungen);
     this.preisnachlass = preisnachlass(this.rechnung);
     this.umsatzsteuer = umsatzsteuer(this.netto, this.umsatzsteuersatz);
     this.brutto = brutto(this.rechnung, this.umsatzsteuersatz);

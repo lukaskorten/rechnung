@@ -1,12 +1,12 @@
 <section>
-  <div class="leistungen-grid">
+  <div class="positionen-grid">
     <div class="text-secondary">Bezeichnung</div>
     <div class="text-secondary">Menge</div>
     <div class="text-secondary">Preis je Einheit</div>
     <div class="text-secondary">Preis</div>
   </div>
   <hr />
-  <div class="leistungen-grid">
+  <div class="positionen-grid">
     <ng-container *ngFor="let leistung of rechnung.leistungen">
       <div>{{ leistung.bezeichnung }} ({{ leistung.stundensatz.name }})</div>
       <div>{{ leistung.menge | number }} Std.</div>
@@ -18,7 +18,7 @@
       </div>
       <div>
         {{
-          leistungspreis(leistung)
+          preisProEinheit(leistung)
             | currency: rechnung.zahlungsbedingungen.waehrung
         }}
       </div>

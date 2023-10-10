@@ -4,18 +4,19 @@ import {
   ApiZahlungsbedingungen,
 } from '../api/api-rechnung';
 
+export function zahlungsfristAm(rechnung: ApiRechnung): Date {
+  const rechnungsdatum = new Date(rechnung.erstelltAm);
+  const { zahlungsziel } = rechnung.zahlungsbedingungen;
+  rechnungsdatum.setDate(rechnungsdatum.getDate() + zahlungsziel);
+  return rechnungsdatum;
+}
+
 export function preisnachlass(rechnung: ApiRechnung): number {
   const { leistungen, zahlungsbedingungen } = rechnung;
-  return preis(leistungen) * skonto(zahlungsbedingungen);
+  return netto(leistungen) * skonto(zahlungsbedingungen);
 }
 
-export function preis(leistungen: ApiLeistung[]): number {
-  return leistungen
-    .map((l) => leistungspreis(l))
-    .reduce((acc, p) => acc + p, 0);
-}
-
-export function leistungspreis(leistung: ApiLeistung): number {
+export function preisProEinheit(leistung: ApiLeistung): number {
   return leistung.menge * leistung.stundensatz.betrag;
 }
 
@@ -33,14 +34,17 @@ export function umsatzsteuer(netto: number, steuersatz: number): number {
   return netto * (steuersatz / 100);
 }
 
-export function brutto(rechnung: ApiRechnung, steuersatz: number): number {
-  const netto = preis(rechnung.leistungen);
-  return netto - preisnachlass(rechnung) + umsatzsteuer(netto, steuersatz);
+export function netto(leistungen: ApiLeistung[]): number {
+  return leistungen
+    .map((l) => preisProEinheit(l))
+    .reduce((acc, p) => acc + p, 0);
 }
 
-export function zahlungsfristAm(rechnung: ApiRechnung): Date {
-  const rechnungsdatum = new Date(rechnung.erstelltAm);
-  const { zahlungsziel } = rechnung.zahlungsbedingungen;
-  rechnungsdatum.setDate(rechnungsdatum.getDate() + zahlungsziel);
-  return rechnungsdatum;
+export function brutto(rechnung: ApiRechnung, steuersatz: number): number {
+  const nettobetrag = netto(rechnung.leistungen);
+  return (
+    nettobetrag -
+    preisnachlass(rechnung) +
+    umsatzsteuer(nettobetrag, steuersatz)
+  );
 }
