@@ -2,15 +2,15 @@
   <div class="betraege-grid">
     <div class="text-secondary">Nettobetrag</div>
     <div>{{ netto | currency: rechnung.zahlungsbedingungen.waehrung }}</div>
-
     <div class="text-secondary">
       Preisnachlass (Abzug Skonto {{ skonto | percent }})
     </div>
     <div>
       {{ preisnachlass | currency: rechnung.zahlungsbedingungen.waehrung }}
     </div>
-
-    <div class="text-secondary">Umsatzsteuer {{ umsatzsteuersatz }} %</div>
+    <div class="text-secondary">
+      Umsatzsteuer {{ umsatzsteuersatz | percent }}
+    </div>
     <div>
       {{ umsatzsteuer | currency: rechnung.zahlungsbedingungen.waehrung }}
     </div>

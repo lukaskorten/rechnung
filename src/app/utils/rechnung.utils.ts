@@ -1,8 +1,6 @@
-import {
-  ApiLeistung,
-  ApiRechnung,
-  ApiZahlungsbedingungen,
-} from '../api/api-rechnung';
+import { ApiLeistung, ApiRechnung, ApiZahlungsbedingungen } from '../api';
+
+export const UMSATZSTEUERSATZ = 0.19;
 
 export function zahlungsfristAm(rechnung: ApiRechnung): Date {
   const rechnungsdatum = new Date(rechnung.erstelltAm);
@@ -30,21 +28,17 @@ export function skonto(zahlungsbedingungen: ApiZahlungsbedingungen): number {
   return 0;
 }
 
-export function umsatzsteuer(netto: number, steuersatz: number): number {
-  return netto * (steuersatz / 100);
-}
-
 export function netto(leistungen: ApiLeistung[]): number {
   return leistungen
     .map((l) => preisProEinheit(l))
     .reduce((acc, p) => acc + p, 0);
 }
 
-export function brutto(rechnung: ApiRechnung, steuersatz: number): number {
+export function umsatzsteuer(netto: number): number {
+  return netto * UMSATZSTEUERSATZ;
+}
+
+export function brutto(rechnung: ApiRechnung): number {
   const nettobetrag = netto(rechnung.leistungen);
-  return (
-    nettobetrag -
-    preisnachlass(rechnung) +
-    umsatzsteuer(nettobetrag, steuersatz)
-  );
+  return nettobetrag - preisnachlass(rechnung) + umsatzsteuer(nettobetrag);
 }

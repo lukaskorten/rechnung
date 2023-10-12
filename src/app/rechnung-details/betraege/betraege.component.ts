@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { ApiRechnung } from 'src/app/api/api-rechnung';
+import { ApiRechnung } from '../../api';
 import {
   brutto,
   netto,
   preisnachlass,
   skonto,
   umsatzsteuer,
-} from '../../utils/rechnung.utils';
+  UMSATZSTEUERSATZ,
+} from '../../utils';
 
 @Component({
   selector: 'app-betraege',
@@ -18,8 +19,7 @@ import {
 })
 export class BetraegeComponent implements OnInit {
   @Input({ required: true }) rechnung!: ApiRechnung;
-
-  readonly umsatzsteuersatz = 19;
+  readonly umsatzsteuersatz = UMSATZSTEUERSATZ;
 
   netto!: number;
   preisnachlass!: number;
@@ -30,8 +30,8 @@ export class BetraegeComponent implements OnInit {
   ngOnInit() {
     this.netto = netto(this.rechnung.leistungen);
     this.preisnachlass = preisnachlass(this.rechnung);
-    this.umsatzsteuer = umsatzsteuer(this.netto, this.umsatzsteuersatz);
-    this.brutto = brutto(this.rechnung, this.umsatzsteuersatz);
+    this.umsatzsteuer = umsatzsteuer(this.netto);
+    this.brutto = brutto(this.rechnung);
     this.skonto = skonto(this.rechnung.zahlungsbedingungen);
   }
 }
