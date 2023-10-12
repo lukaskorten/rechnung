@@ -11,9 +11,11 @@ export interface ApiRechnung {
   zahlungsbedingungen: ApiZahlungsbedingungen;
 }
 
+export type Waehrung = 'EUR' | 'USD';
+
 export interface ApiZahlungsbedingungen {
   zahlungsziel: number;
-  waehrung: 'EUR' | 'USD';
+  waehrung: Waehrung;
 }
 
 export interface ApiLeistung {
