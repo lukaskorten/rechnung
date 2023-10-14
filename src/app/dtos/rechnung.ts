@@ -1,10 +1,3 @@
-export interface Position {
-  bezeichnung: string;
-  menge: number;
-  preisProEinheit: number;
-  preis: number;
-}
-
 export interface Rechnung {
   id: string;
   rechnungsnummer: string;
@@ -12,13 +5,22 @@ export interface Rechnung {
   kundennummer: string;
   erstelltAm: Date;
   zahlungsziel: number;
-  zahlungsfristAm: Date;
-  waehrung: 'EUR' | 'USD';
+  faelligAm: Date;
+  waehrung: Waehrung;
   skonto: number;
-  positionen: Position[];
+  positionen: Rechnungsposition[];
   netto: number;
   brutto: number;
   preisnachlass: number;
   umsatzsteuersatz: number;
   umsatzsteuer: number;
+}
+
+export type Waehrung = 'EUR' | 'USD';
+
+export interface Rechnungsposition {
+  bezeichnung: string;
+  menge: number;
+  preisProEinheit: number;
+  preis: number;
 }
