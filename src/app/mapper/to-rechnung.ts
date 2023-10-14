@@ -1,42 +1,38 @@
-import {
-  ApiLeistung,
-  ApiRechnung,
-  ApiZahlungsbedingungen,
-} from '../api/api-rechnung';
-import { Rechnungsposition, Rechnung } from '../dtos/rechnung';
+import { ApiLeistung, ApiRechnung, ApiZahlungsbedingungen } from '../api';
+import { Rechnungsposition, Rechnung } from '../dtos';
 
 const skontoBei30Tagen = 0.0225;
 const skontoBei15Tagen = 0.03;
 const skontoBeiMehrAls30Tage = 0;
 const umsatzsteuersatz = 0.19;
 
-export function toRechnungen(data: ApiRechnung[]): Rechnung[] {
-  return data.map(toRechnung);
+export function toRechnungen(sourceList: ApiRechnung[]): Rechnung[] {
+  return sourceList.map(toRechnung);
 }
 
-export function toRechnung(data: ApiRechnung): Rechnung {
+export function toRechnung(source: ApiRechnung): Rechnung {
   return {
-    id: data.id,
-    rechnungsnummer: data.nummer,
-    kundenname: data.kunde.name,
-    kundennummer: data.kunde.nummer,
-    erstelltAm: new Date(data.erstelltAm),
-    faelligAm: faelligAm(data),
-    zahlungsziel: data.zahlungsbedingungen.zahlungsziel,
-    waehrung: data.zahlungsbedingungen.waehrung,
-    skonto: skonto(data.zahlungsbedingungen),
-    positionen: positionen(data.leistungen),
-    netto: netto(data.leistungen),
-    brutto: brutto(data),
-    preisnachlass: preisnachlass(data),
-    umsatzsteuer: umsatzsteuer(data),
+    id: source.id,
+    rechnungsnummer: source.nummer,
+    kundenname: source.kunde.name,
+    kundennummer: source.kunde.nummer,
+    erstelltAm: new Date(source.erstelltAm),
+    faelligAm: faelligAm(source),
+    zahlungsziel: source.zahlungsbedingungen.zahlungsziel,
+    waehrung: source.zahlungsbedingungen.waehrung,
+    skonto: skonto(source.zahlungsbedingungen),
+    positionen: positionen(source.leistungen),
+    netto: netto(source.leistungen),
+    brutto: brutto(source),
+    preisnachlass: preisnachlass(source),
+    umsatzsteuer: umsatzsteuer(source),
     umsatzsteuersatz,
   };
 }
 
-function faelligAm(apiRechnung: ApiRechnung): Date {
-  const rechnungsdatum = new Date(apiRechnung.erstelltAm);
-  const { zahlungsziel } = apiRechnung.zahlungsbedingungen;
+function faelligAm(rechnung: ApiRechnung): Date {
+  const rechnungsdatum = new Date(rechnung.erstelltAm);
+  const { zahlungsziel } = rechnung.zahlungsbedingungen;
   rechnungsdatum.setDate(rechnungsdatum.getDate() + zahlungsziel);
   return rechnungsdatum;
 }
@@ -62,15 +58,15 @@ function skonto(zahlungsbedingungen: ApiZahlungsbedingungen): number {
   return skontoBeiMehrAls30Tage;
 }
 
-function umsatzsteuer(apiRechnung: ApiRechnung): number {
-  return netto(apiRechnung.leistungen) * umsatzsteuersatz;
+function umsatzsteuer(rechnung: ApiRechnung): number {
+  return netto(rechnung.leistungen) * umsatzsteuersatz;
 }
 
-function brutto(apiRechnung: ApiRechnung): number {
+function brutto(rechnung: ApiRechnung): number {
   return (
-    netto(apiRechnung.leistungen) -
-    preisnachlass(apiRechnung) +
-    umsatzsteuer(apiRechnung)
+    netto(rechnung.leistungen) -
+    preisnachlass(rechnung) +
+    umsatzsteuer(rechnung)
   );
 }
 

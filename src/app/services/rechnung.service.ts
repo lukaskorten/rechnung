@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { RechnungApiService } from '../api/rechnung-api.service';
-import { Rechnung } from '../dtos/rechnung';
-import { toRechnung, toRechnungen } from '../mapper/to-rechnung';
+import { RechnungApiService } from '../api';
+import { Rechnung } from '../dtos';
+import { toRechnung, toRechnungen } from '../mapper';
 
 @Injectable({
   providedIn: 'root',
