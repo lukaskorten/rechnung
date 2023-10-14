@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ApiRechnung } from '../../api/api-rechnung';
-import { skonto, zahlungsfristAm } from '../../utils/rechnung.utils';
+import { Component, Input, OnInit } from '@angular/core';
+import { ApiRechnung } from '../../api';
+import { skonto, zahlungsfristAm } from '../../utils';
 
 @Component({
   selector: 'app-rechnung-info',

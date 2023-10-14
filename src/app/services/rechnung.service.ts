@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { EMPTY, Observable, of } from 'rxjs';
-import { ApiRechnung } from '../api/api-rechnung';
-import { RechnungApiService } from '../api/rechnung-api.service';
-import { rechnungen } from '../api/rechnungen';
+import { Observable } from 'rxjs';
+import { ApiRechnung, RechnungApiService } from '../api';
 
 @Injectable({
   providedIn: 'root',

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { ApiRechnung } from '../../api/api-rechnung';
-import { preisProEinheit } from '../../utils/rechnung.utils';
+import { ApiRechnung } from '../../api';
+import { preisProEinheit } from '../../utils';
 
 @Component({
   selector: 'app-positionen',
